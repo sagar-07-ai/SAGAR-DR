@@ -5,6 +5,9 @@ from datetime import datetime
 
 app = FastAPI()
 
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
 
 @app.post("/predict")
 async def get_inference(left_eye: UploadFile = File(...), right_eye: UploadFile = File(...)):

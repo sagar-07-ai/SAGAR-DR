@@ -121,3 +121,18 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+livenessProbe:
+  httpGet:
+    path: /predict
+    port: 8317
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /predict
+    port: 8317
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  failureThreshold: 3

@@ -7,7 +7,8 @@ app = FastAPI()
 
 @app.get("/health")
 def health_check():
-    return {"status": "ok"}
+    # Intentional bug: reference undefined variable
+    return {"status": "ok", "time": undefined_variable}
 
 @app.post("/predict")
 async def get_inference(left_eye: UploadFile = File(...), right_eye: UploadFile = File(...)):
